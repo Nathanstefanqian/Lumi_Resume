@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #000000; /* 黑色主题 */
+  --color-zinc-50: #fafafa;
+  --color-zinc-100: #f4f4f5;
+  --color-zinc-200: #e4e4e7;
+  --color-zinc-300: #d4d4d8;
+  --color-zinc-400: #a1a1aa;
+  --color-zinc-500: #71717a;
+  --color-zinc-600: #52525b;
+  --color-zinc-700: #3f3f46;
+  --color-zinc-800: #27272a;
+  --color-zinc-900: #18181b;
+}
+
+@layer base {
+  body {
+    background-color: #f4f4f5;
+    color: #1a1a1a;
+    font-family: "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* 严谨学术字体体系：还原 PDF 质感
+   1. 定义一个仅针对西文字符的字体，强制让中文和标点回退到中文字体
+   2. 解决标点符号“上浮”或居中的问题（通常是因为英文字体接管了标点）
+*/
+@font-face {
+  font-family: 'AcademicSerif';
+  src: local('Times New Roman'), local('Times');
+  unicode-range: U+0000-007F, U+00A0-00FF; /* 仅限基本拉丁字符和西欧字符 */
+}
+
+.font-academic {
+  font-family: 'AcademicSerif', "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: auto;
+}
+
+/* 统一行高和基准线，强制覆盖 Tailwind 的 leading-relaxed */
+.font-academic, [contenteditable="true"], .leading-relaxed {
+  line-height: 1.6 !important;
+  vertical-align: baseline !important;
+}
+
+/* 针对中文排版的优化 */
+.text-justify {
+  text-align: justify;
+  text-justify: inter-ideograph;
+  word-break: break-word;
+}
+
+strong {
+  font-weight: 700;
+  color: #000;
+  line-height: inherit;
+}
+
+.font-number {
+  font-family: 'AcademicSerif', serif;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-area {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    overflow: hidden !important;
+  }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* 截图特有的斜边标题样式 */
+.slanted-title {
+    position: relative;
+    background-color: #000000;
+    color: white;
+    padding: 2px 25px 2px 15px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 11pt;
+  }
+  
+  .slanted-title::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 15px;
+    background-color: white;
+    transform: skewX(-30deg) translateX(8px);
+  }
+
+.slanted-title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 10px;
+  bottom: 0;
+  width: 2px;
+  background-color: white;
+  transform: skewX(-30deg);
+  z-index: 10;
+}
+
+/* 编辑状态样式 */
+[contenteditable="true"]:hover {
+  outline: 1px dashed #000000;
+  cursor: text;
+}
+[contenteditable="true"]:focus {
+  outline: 2px solid #000000;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* 隐藏所有原生滚动条 */
+* {
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important;  /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari, Opera */
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* 全局禁用原生滚动条 */
+html, body {
+  overflow: hidden;
+  height: 100%;
+}
+
+.custom-scrollbar {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none !important;
+}
