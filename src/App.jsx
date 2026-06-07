@@ -706,8 +706,8 @@ const ResumeEditor = () => {
       {/* 主编辑预览区 */}
       <div className="flex-1 flex flex-col min-w-0 relative h-full md:h-screen">
         {/* 顶部操作栏 - 响应式优化 */}
-        <header className="bg-white/80 backdrop-blur-md border-b border-zinc-300 p-3 md:p-4 flex items-center justify-between gap-3 sticky top-0 z-50 shrink-0 overflow-x-auto no-scrollbar">
-          <div className="flex items-center gap-2 md:gap-3 shrink-0">
+        <header className="bg-white/80 backdrop-blur-md border-b border-zinc-300 p-2 md:p-4 flex items-center justify-between gap-2 md:gap-3 sticky top-0 z-50 shrink-0 overflow-x-auto no-scrollbar">
+          <div className="flex items-center gap-1.5 md:gap-3 shrink-0">
             <button 
               onClick={() => setShowSidebar(!showSidebar)}
               className="hidden md:flex p-2 hover:bg-zinc-100 rounded-xl transition-all"
@@ -716,78 +716,82 @@ const ResumeEditor = () => {
               <Layout size={20} className={showSidebar ? 'text-black' : 'text-zinc-400'} />
             </button>
             <div className="h-6 w-px bg-zinc-200 hidden md:block" />
-            <div className="flex bg-zinc-100 p-1 rounded-xl">
+            <div className="flex bg-zinc-100 p-0.5 md:p-1 rounded-lg md:rounded-xl">
               <button 
                 onClick={() => setLang('zh')} 
-                className={`px-3 py-1.5 rounded-lg text-[10px] md:text-xs font-black transition-all ${lang === 'zh' ? 'bg-white text-black shadow-sm' : 'text-zinc-400 hover:text-zinc-600'}`}
+                className={`px-2 py-1 md:px-3 md:py-1.5 rounded-md md:rounded-lg text-[9px] md:text-xs font-black transition-all ${lang === 'zh' ? 'bg-white text-black shadow-sm' : 'text-zinc-400 hover:text-zinc-600'}`}
               >
                 ZH
               </button>
               <button 
                 onClick={() => setLang('en')} 
-                className={`px-3 py-1.5 rounded-lg text-[10px] md:text-xs font-black transition-all ${lang === 'en' ? 'bg-white text-black shadow-sm' : 'text-zinc-400 hover:text-zinc-600'}`}
+                className={`px-2 py-1 md:px-3 md:py-1.5 rounded-md md:rounded-lg text-[9px] md:text-xs font-black transition-all ${lang === 'en' ? 'bg-white text-black shadow-sm' : 'text-zinc-400 hover:text-zinc-600'}`}
               >
                 EN
               </button>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-1.5 md:gap-2 shrink-0">
             <button 
               onClick={() => togglePanel('settings')} 
-              className={`p-2 md:px-4 md:py-2.5 rounded-xl flex items-center gap-2 transition-all font-bold text-xs ${showSettings ? 'bg-black text-white shadow-lg shadow-zinc-200' : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-700'}`}
+              className={`p-1.5 md:px-4 md:py-2.5 rounded-lg md:rounded-xl flex items-center gap-1.5 md:gap-2 transition-all font-bold text-[10px] md:text-xs ${showSettings ? 'bg-black text-white shadow-lg shadow-zinc-200' : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-700'}`}
+              title="排版设置"
             >
-              <Settings size={18} /> <span className="hidden sm:inline">排版设置</span>
+              <Settings size={16} className="md:w-[18px] md:h-[18px]" /> <span className="hidden xs:inline sm:inline">排版</span>
             </button>
             <button 
               onClick={() => togglePanel('content')} 
-              className={`p-2 md:px-4 md:py-2.5 rounded-xl flex items-center gap-2 transition-all font-bold text-xs ${showContentDrawer ? 'bg-black text-white shadow-lg shadow-zinc-200' : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-700'}`}
+              className={`p-1.5 md:px-4 md:py-2.5 rounded-lg md:rounded-xl flex items-center gap-1.5 md:gap-2 transition-all font-bold text-[10px] md:text-xs ${showContentDrawer ? 'bg-black text-white shadow-lg shadow-zinc-200' : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-700'}`}
+              title="内容编辑"
             >
-              <Layout size={18} /> <span className="hidden sm:inline">内容编辑</span>
+              <Layout size={16} className="md:w-[18px] md:h-[18px]" /> <span className="hidden xs:inline sm:inline">内容</span>
             </button>
             <button 
               onClick={() => togglePanel('color')} 
-              className={`p-2 md:px-4 md:py-2.5 rounded-xl flex items-center gap-2 transition-all font-bold text-xs ${showColorPicker ? 'bg-black text-white shadow-lg shadow-zinc-200' : 'bg-white border border-zinc-200 hover:border-zinc-400 text-zinc-700'}`}
+              className={`p-1.5 md:px-4 md:py-2.5 rounded-lg md:rounded-xl flex items-center gap-1.5 md:gap-2 transition-all font-bold text-[10px] md:text-xs ${showColorPicker ? 'bg-black text-white shadow-lg shadow-zinc-200' : 'bg-white border border-zinc-200 hover:border-zinc-400 text-zinc-700'}`}
+              title="配色方案"
             >
-              <Palette size={18} /> <span className="hidden sm:inline">配色方案</span>
+              <Palette size={16} className="md:w-[18px] md:h-[18px]" /> <span className="hidden xs:inline sm:inline">配色</span>
             </button>
             <button 
               onClick={() => togglePanel('history')} 
-              className={`p-2 md:px-4 md:py-2.5 rounded-xl flex items-center gap-2 transition-all font-bold text-xs ${showHistory ? 'bg-black text-white shadow-lg shadow-zinc-200' : 'bg-white border border-zinc-200 hover:border-zinc-400 text-zinc-700'}`}
+              className={`p-1.5 md:px-4 md:py-2.5 rounded-lg md:rounded-xl flex items-center gap-1.5 md:gap-2 transition-all font-bold text-[10px] md:text-xs ${showHistory ? 'bg-black text-white shadow-lg shadow-zinc-200' : 'bg-white border border-zinc-200 hover:border-zinc-400 text-zinc-700'}`}
+              title="版本记录"
             >
-              <History size={18} /> <span className="hidden sm:inline">版本记录</span>
+              <History size={16} className="md:w-[18px] md:h-[18px]" /> <span className="hidden xs:inline sm:inline">历史</span>
             </button>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0 ml-auto sm:ml-0">
-            <button onClick={handleSaveData} disabled={isSaving || !isDirty} className={`${(isSaving || !isDirty) ? 'bg-zinc-200 text-zinc-400 cursor-not-allowed' : 'bg-black hover:bg-zinc-800 text-white'} px-4 py-2.5 rounded-xl flex items-center gap-2 transition-all active:scale-95 font-bold text-xs shadow-lg`}>
-              <Save size={18} className={isSaving ? 'animate-pulse' : ''} /> <span className="hidden lg:inline">{isSaving ? labels.saving : labels.saveData}</span>
+          <div className="flex items-center gap-1.5 md:gap-2 shrink-0 ml-auto sm:ml-0">
+            <button onClick={handleSaveData} disabled={isSaving || !isDirty} className={`${(isSaving || !isDirty) ? 'bg-zinc-200 text-zinc-400 cursor-not-allowed' : 'bg-black hover:bg-zinc-800 text-white'} p-1.5 md:px-4 md:py-2.5 rounded-lg md:rounded-xl flex items-center gap-1.5 md:gap-2 transition-all active:scale-95 font-bold text-[10px] md:text-xs shadow-lg`}>
+              <Save size={16} className={`md:w-[18px] md:h-[18px] ${isSaving ? 'animate-pulse' : ''}`} /> <span className="hidden xs:inline lg:inline">{isSaving ? '保存中' : '保存'}</span>
             </button>
             
             <button 
               onClick={onSaveAsResume}
-              className="hidden sm:flex p-2 md:px-4 md:py-2.5 bg-white border border-zinc-200 hover:border-zinc-400 text-zinc-700 rounded-xl items-center gap-2 transition-all font-bold text-xs"
+              className="hidden sm:flex p-1.5 md:px-4 md:py-2.5 bg-white border border-zinc-200 hover:border-zinc-400 text-zinc-700 rounded-lg md:rounded-xl items-center gap-1.5 md:gap-2 transition-all font-bold text-[10px] md:text-xs"
               title="另存为新简历"
             >
-              <Copy size={18} /> <span className="hidden lg:inline">另存为</span>
+              <Copy size={16} className="md:w-[18px] md:h-[18px]" /> <span className="hidden lg:inline">另存为</span>
             </button>
 
-            <div className="flex bg-black rounded-xl overflow-hidden shadow-lg">
+            <div className="flex bg-black rounded-lg md:rounded-xl overflow-hidden shadow-lg">
               <button 
                 onClick={handleExportPNG} 
                 disabled={isExporting} 
-                className={`${isExporting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-zinc-800'} text-white px-4 py-2.5 flex items-center gap-2 transition-all font-bold text-xs border-r border-white/10`}
+                className={`${isExporting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-zinc-800'} text-white p-1.5 md:px-4 md:py-2.5 flex items-center gap-1.5 md:gap-2 transition-all font-bold text-[10px] md:text-xs border-r border-white/10`}
                 title="导出图片"
               >
-                <Image size={18} /> <span className="hidden lg:inline">PNG</span>
+                <Image size={16} className="md:w-[18px] md:h-[18px]" /> <span className="hidden xs:inline lg:inline">PNG</span>
               </button>
               <button 
                 onClick={handleExportPDF} 
                 disabled={isExporting} 
-                className={`${isExporting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-zinc-800'} text-white px-4 py-2.5 flex items-center gap-2 transition-all font-bold text-xs`}
+                className={`${isExporting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-zinc-800'} text-white p-1.5 md:px-4 md:py-2.5 flex items-center gap-1.5 md:gap-2 transition-all font-bold text-[10px] md:text-xs`}
                 title="导出 PDF"
               >
-                <Download size={18} /> <span className="hidden lg:inline">PDF</span>
+                <Download size={16} className="md:w-[18px] md:h-[18px]" /> <span className="hidden xs:inline lg:inline">PDF</span>
               </button>
             </div>
           </div>

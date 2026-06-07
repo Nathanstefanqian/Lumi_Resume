@@ -8,13 +8,22 @@ const Sidebar = ({ config, setConfig, isDirty, onClose, currentResumeId, onSelec
 
   return (
     <div className="w-full md:w-72 bg-white border-r border-zinc-300 h-full md:h-screen sticky top-0 overflow-hidden flex flex-col shrink-0 z-[60] relative shadow-2xl md:shadow-none">
-      <button 
-        onClick={onClose}
-        className="absolute top-6 right-4 p-2.5 text-zinc-400 hover:text-black hover:bg-zinc-100 transition-all z-10 bg-zinc-50 rounded-full md:hidden"
-        title="关闭侧边栏"
-      >
-        <X size={20} />
-      </button>
+      {/* 移动端顶栏：品牌 Logo + 关闭按钮 */}
+      <div className="flex md:hidden items-center justify-between px-6 py-4 shrink-0 border-b border-zinc-100">
+        <div className="flex items-center gap-2">
+          <div className="w-7 h-7 bg-black rounded-lg flex items-center justify-center">
+            <Sparkles className="text-white" size={14} />
+          </div>
+          <span className="font-black text-sm tracking-tight">Lumi 简历</span>
+        </div>
+        <button 
+          onClick={onClose}
+          className="p-2 text-zinc-400 hover:text-black hover:bg-zinc-100 transition-all bg-zinc-50 rounded-xl"
+          title="关闭侧边栏"
+        >
+          <X size={20} />
+        </button>
+      </div>
 
       {/* 用户信息与登录 */}
       <div className="p-6 pb-2 shrink-0">

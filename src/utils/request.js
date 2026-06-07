@@ -2,8 +2,8 @@ import axios from 'axios';
 
 // 创建 axios 实例
 const request = axios.create({
-  baseURL: '', // 使用相对路径，配合 vite proxy
-  timeout: 10000,
+  baseURL: import.meta.env.VITE_API_BASE_URL || '', 
+  timeout: 15000,
 });
 
 // 请求拦截器
